@@ -1,6 +1,8 @@
 401 JS --  Lab 42 OAUTH FRONTEND
 ===
+David's Description
 
+===
 ## Submission Instructions
 * Use the supplied starter kit to begin work to complete this assignment
   
