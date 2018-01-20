@@ -1,5 +1,5 @@
 {
-  "name": "bbchat",
+  "name": "David's Chat using Google Auth. Lab 41 and 42 combined.",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -21,7 +21,6 @@
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
-    "faker": "^4.1.0",
     "http-errors": "^1.6.2",
     "jsonwebtoken": "^7.4.2",
     "lodash": "^4.17.4",

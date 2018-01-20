@@ -11,8 +11,35 @@ let URL = process.env.CLIENT_URL;
 
 export default new Router()
 
-    // TODO: Need routes to GET a user using only their bearer token, and to do a PUT on a user account.
-    // TODO: These can go here to get things wired up, but probably belong in a different route that's just for user data
+    .put('/user', bearerAuth, bodyParser.json(), (req, res, next) => {
+        
+        let user = req.user;
+        
+        try {
+            
+            User.findOne({_id:user._id})
+                .then( record => {
+                    Object.assign(record, req.body);
+                    return record.save();
+                })
+                .then( record => res.send(record) )
+                .catch(next);
+    
+        }   
+        catch(e) {
+            next(e.message);
+        }
+    })
+    
+    .get('/user', bearerAuth, (req, res, next) => {
+        let user = req.user;
+        if ( user ) { 
+            res.send(user);
+        }
+        else {
+            next();
+        }
+    })
 
     .post('/signup', bodyParser.json() , (req, res, next) => {
         

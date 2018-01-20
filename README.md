@@ -1,6 +1,16 @@
-401 JS --  Lab 42 OAUTH FRONTEND
+401 JS --  Lab 41 & 42 OAUTH FRONTEND & BACKEND COMBINED
 ===
+David's Description
 
+Make sure you create a .env file before you begin. Check out the readme in server folder for how to set that up and what you need.
+You will need to open three terminals:
+
+Server folder -> "npm run mongo-on" to fire up mongo.
+Server folder -> "npm run watch/start" to fire up the backend server
+Client folder -> npm run watch" to fire up the frontend server. Navigate to the correct port in browser.
+
+You will need to go to google developer console and create an API to get secret key and Id before you can make this work.
+===
 ## Submission Instructions
 * Use the supplied starter kit to begin work to complete this assignment
   
