@@ -1,5 +1,5 @@
 {
-  "name": "bbchat",
+  "name": "David's Chat using Google Auth. Lab 41 and 42 combined.",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
