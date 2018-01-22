@@ -22,6 +22,7 @@ class App extends React.Component {
     
     componentWillMount() {
         // TODO: this is a good time to validate the user
+      this.props.validate;
     }
 
     render() {
@@ -31,10 +32,14 @@ class App extends React.Component {
                 <Header appTitle="Chat App" />
 
                 { /* TODO: Probably should send the routing actions and the route state so you can show/hide links in the menu */ }
-                <Navbar /> 
+                <Navbar loggedIn={this.props.loggedIn}/> 
 
                 <main>
-                   { /* TODO: Insert Switch logic in here for routing */ }
+                  <Switch>
+                      <Route exact path='/login' component={Login}/>
+                      <Route exact path='/profile' component={Profile}/>
+                      <Route exact path='/chat' component={Chat}/>
+                  </Switch>
                 </main>
 
                 <Footer>
