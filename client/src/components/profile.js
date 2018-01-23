@@ -16,8 +16,9 @@ class Profile extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 }
 
-componentWillReceiveProps(props) {
-  if(this.props.profile) { this.setState(this.props.profile) }
+//Update the new username immediately
+componentWillReceiveProps(nextProps) {
+  if(nextProps) { this.setState(nextProps.profile) }
 }
 
 handleChange(e) {
@@ -27,6 +28,7 @@ handleChange(e) {
 handleSubmit(e) {
   e.preventDefault();
   this.props.updateProfile(this.state);
+  this.setState(this.props.profile);
 }
 
   render() {
@@ -40,6 +42,7 @@ handleSubmit(e) {
           value={this.state.username}
           onChange={this.handleChange}/>
       </label>	
+      <button type="submit">Update</button>
       </form>
     )
   }

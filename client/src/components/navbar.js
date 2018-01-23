@@ -16,7 +16,7 @@ class Navbar extends React.Component {
 
     
     render() {
-        console.log('this.props.auth is ', this.props.auth)
+
         return (
 
             <nav>

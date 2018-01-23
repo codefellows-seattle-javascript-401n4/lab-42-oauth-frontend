@@ -22,7 +22,7 @@ class App extends React.Component {
     
     componentWillMount() {
         // TODO: this is a good time to validate the user
-      this.props.validate;
+      this.props.validate();
     }
 
     render() {

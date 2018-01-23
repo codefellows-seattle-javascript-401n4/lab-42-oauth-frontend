@@ -7,7 +7,7 @@ import querystring from 'querystring';
 class Login extends React.Component {
   
     render() {
-      console.log('hello from login')
+
       let oauthURL = "https://accounts.google.com/o/oauth2/v2/auth";
 
       let opts = {

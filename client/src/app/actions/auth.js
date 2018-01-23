@@ -10,13 +10,10 @@ import cookie from 'react-cookies';
 
 export const validate = () => (dispatch) => {
   let token = cookie.load('X-BBB-Token');
-  console.log('in the validate')
     if(token){
-      console.log('token exists')
       superagent.get(`${__API_URL__}/user`)
       .set('Authorization', `Bearer ${token}`)
       .then(response => {
-        console.log('response from GET user is ', response.body)
           dispatch(loginAction(response.body));
       })
       .catch(console.error);
@@ -24,7 +21,6 @@ export const validate = () => (dispatch) => {
 }
 
 export const login = (user) => (dispatch) => {
-  console.log('user from login action is ', user)
   dispatch(loginAction(user));
 }
 

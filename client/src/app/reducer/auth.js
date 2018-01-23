@@ -4,7 +4,6 @@ export default (state=false, action) => {
   
   switch(type) {
       case "LOGIN":
-      console.log('YES')
           return true;
           
       case "LOGOUT":
