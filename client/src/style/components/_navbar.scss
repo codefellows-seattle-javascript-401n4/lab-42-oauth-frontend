@@ -7,15 +7,18 @@ nav {
     ul {
         display:flex;
         flex-direction:row;
+        justify-content: space-around;
         
         li {
             padding:0 1em;
             position:relative;
             min-width: 100px;
+            color: #ccc;
         }
         
         li:hover {
            background:#ccc;
+           color: black;
            
            a {
                color: #000;

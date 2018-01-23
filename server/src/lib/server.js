@@ -7,6 +7,7 @@ import express from 'express'
 import * as mongo from './mongo.js'
 
 import authRouter from '../router/auth.js'
+import userRouter from '../router/user.js'
 import fourOhFour from '../middleware/four-oh-four.js'
 import errorHandler from '../middleware/error-middleware.js'
 
@@ -22,6 +23,8 @@ app.use(cors({
 
 // routers
 app.use(authRouter)
+app.use(userRouter)
+
 
 // handle errors
 app.use(fourOhFour)

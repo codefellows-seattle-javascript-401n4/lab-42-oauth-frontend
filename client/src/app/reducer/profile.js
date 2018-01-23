@@ -2,8 +2,23 @@
 // TODO: On login, we'll want to set the user that is logged in as our state
 
 
-export default (state=null, action) => {
+export default (state={}, {type, payload}) => {
     
-    return state;
+    switch(type) {
+
+        case 'LOGIN':
+            return payload;
+
+        case 'LOGOUT':
+            return {};
+
+        case 'UPDATE_PROFILE':
+            return Object.assign({}, state, payload)
+
+        default:
+        return state;
+    }
+    
+   
     
 }

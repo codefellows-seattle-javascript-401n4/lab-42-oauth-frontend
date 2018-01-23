@@ -7,23 +7,24 @@ class Navbar extends React.Component {
         super(props)
 
     this.startChat = this.startChat.bind(this);
-
     }
 
     startChat() {
       this.props.switchRoute('/chat');        
     }
+
+
     
     render() {
-        
+        console.log('this.props.auth is ', this.props.auth)
         return (
 
             <nav>
-                {renderIf(this.props.authentication, 
+                {renderIf(this.props.auth,
                     <ul>
-                    <li><button onClick={this.startChat}>Chat</button></li>
-                    <li><button onClick={ () => this.props.switchRoute('/profile') }>Profile</button></li>
-                    <li><button onClick={this.props.handleLogout}>Logout</button></li>
+                    <li onClick={this.startChat}>Chat</li>
+                    <li onClick={ () => this.props.switchRoute('/profile') }>Profile</li>
+                    <li onClick={this.props.logout}>Logout</li>
                     </ul>
                 )}
             </nav>

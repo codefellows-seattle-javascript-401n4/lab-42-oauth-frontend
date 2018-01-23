@@ -2,6 +2,8 @@
 // TODO: Needs to bring in the users profile from state, let them change their username, and save to server + update app state
 
 import React from 'react';
+import {connect} from 'react-redux';
+import * as profileActions from '../app/actions/profile';
 
 class Profile extends React.Component {
 
@@ -43,3 +45,12 @@ handleSubmit(e) {
   }
 }
 
+const mapStateToProps = (state) => ({
+  profile: state.profile
+});
+
+const mapDispatchToProps = (dispatch, getState) => ({
+  updateProfile: (user) => dispatch(profileActions.update(user))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

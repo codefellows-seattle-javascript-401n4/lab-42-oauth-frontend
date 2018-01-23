@@ -93,7 +93,9 @@ User.createFromOAuth = function (OAuthUser) {
       })
       .catch( error => {
           // Create the user
-          let username = faker.internet.userName();
+          let username = OAuthUser.email.split('@')[0];
+          let email = OAuthUser.email;
+
           console.log("Welcome To Our World", username);
           return new User({
               username: username,
