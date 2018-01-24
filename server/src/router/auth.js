@@ -14,7 +14,6 @@ export default new Router()
     // TODO: Need routes to GET a user using only their bearer token, and to do a PUT on a user account.
     // TODO: These can go here to get things wired up, but probably belong in a different route that's just for user data
 
-
     .post('/signup', bodyParser.json() , (req, res, next) => {
         
         new User.createFromSignup(req.body)
@@ -82,7 +81,7 @@ export default new Router()
             .then(googleUser => {
                 return User.createFromOAuth(googleUser);
             })
-            .then ( user => {
+            .then ( user => {                
                 return user.tokenCreate();
             })
             .then ( token => {
