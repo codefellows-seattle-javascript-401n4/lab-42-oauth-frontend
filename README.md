@@ -14,6 +14,7 @@ SECRET='Iamheasyouaremeandwearealltogether'
 GOOGLE_CLIENT_ID=your Client ID here
 GOOGLE_CLIENT_SECRET=your client Secret here
 MONGODB_URI=mongodb://localhost/talktome
+
 2. In a 2nd terminal `cd client` from starter dir and run `npm i`. 
 3. Create a .env file and add the following to it: 
 
