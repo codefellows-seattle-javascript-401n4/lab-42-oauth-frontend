@@ -13,10 +13,10 @@ export default new Router()
 
     // TODO: Need routes to GET a user using only their bearer token, and to do a PUT on a user account.
     // TODO: These can go here to get things wired up, but probably belong in a different route that's just for user data
-    .put('/user', bearerAuth, (req, res, next)={
+    .put('/user', bearerAuth, bodyParser.json(),(req, res, next)=>{
 
     })
-    .get('/user', bearerAuth, bodyParser.json(),(req, res, next)=>{
+    .get('/user', bearerAuth, (req, res, next)=>{
         let user = req.body.user;
         if(user){
             res.send(user)
@@ -102,8 +102,6 @@ export default new Router()
             .catch( error => {
                 console.error(error);
                 res.redirect(URL);
-            });
+            })
         
     })
-        
-;
