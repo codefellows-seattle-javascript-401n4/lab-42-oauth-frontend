@@ -29,14 +29,14 @@ class App extends React.Component {
         return (
             <React.Fragment>
 
-                <Header appTitle="Chat App" switchRoute={this.props.switchRoute} handleLogout={this.props.logout}/>
+                <Header appTitle="Chat App" />
 
                 { /* TODO: Probably should send the routing actions and the route state so you can show/hide links in the menu */ }
-                <Navbar auth = {this.props.auth}/> 
+                <Navbar auth = {this.props.auth} switchRoute={this.props.switchRoute} handleLogout={this.props.logout}/> 
 
                 <main>
                    <Switch location={{pathname:this.props.route}}>
-                   <Route exact path='/chat' component ={Chat}/>
+                   <Route exact path='/chat' component = {Chat}/>
                    <Route exact path = '/profile' component = {Profile}/>
                    <Route exact path = '/login' component = {Login}/>
                    </Switch>

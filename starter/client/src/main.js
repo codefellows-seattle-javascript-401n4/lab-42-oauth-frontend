@@ -11,7 +11,6 @@ import App from './components/app'
 const store = createStore();
 
 class Main extends React.Component {
-
     render() {
         return (
             <Provider store={store}>
@@ -21,7 +20,6 @@ class Main extends React.Component {
             </Provider>
         )
     }
-
 }
 
 ReactDom.render(<Main/>, document.getElementById('root'));

@@ -8,7 +8,7 @@ export default (state=defaultState, action) => {
     let {type, payload} = action;
     switch(type){
         case "LOGIN":
-        return payload;
+        return payload||{};
 
         case "LOGOUT":
         return defaultState;
