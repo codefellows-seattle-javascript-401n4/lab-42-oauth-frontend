@@ -13,6 +13,7 @@
     "mongo-off": "killall mongod"
   },
   "dependencies": {
+    "babel-core": "^6.17.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.24.1",
@@ -28,8 +29,7 @@
     "mongoose": "^4.11.5",
     "morgan": "^1.8.2",
     "socket.io": "^2.0.3",
-    "superagent": "^3.5.2",
-    "babel-core": "^6.17.0"
+    "superagent": "^3.5.2"
   },
   "devDependencies": {
     "faker": "^4.1.0",
