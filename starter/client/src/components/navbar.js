@@ -1,4 +1,5 @@
 import React from 'react';
+import {renderIf} from '../lib/__';
 
 class Navbar extends React.Component {
     
@@ -7,11 +8,16 @@ class Navbar extends React.Component {
         return (
 
             <nav>
-                <ul>
-                   { /* TODO:  Need some dynamic links here for Logout, Profile, Chat to display only when you are logged in */ }
+                <ul>{
+                    renderIf(this.props.auth,
+                    <React.Fragment>
+                        <li><button onClick={()=> this.props.swithRoute('/chat')}>Chat</button></li>
+                        <li><button onClick={()=> this.props.swithRoute('/profile')}>Profile</button></li>
+                        <li><button onClick={this.props.handleLogout}>Logout</button></li>
+                    </React.Fragment>)
+                }
                 </ul>
             </nav>
-
         )
 
     }
