@@ -28,7 +28,8 @@
     "mongoose": "^4.11.5",
     "morgan": "^1.8.2",
     "socket.io": "^2.0.3",
-    "superagent": "^3.5.2"
+    "superagent": "^3.5.2",
+    "babel-core": "^6.17.0"
   },
   "devDependencies": {
     "faker": "^4.1.0",
