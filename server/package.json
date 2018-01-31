@@ -13,6 +13,7 @@
     "mongo-off": "killall mongod"
   },
   "dependencies": {
+    "babel-core": "^6.17.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.24.1",

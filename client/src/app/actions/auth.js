@@ -6,10 +6,17 @@
 import superagent from 'superagent';
 import cookie from 'react-cookies';
 
-export const validate = ()=>dispatch=>{
+export const validate = () => dispatch => {
     let token = cookie.load('X-BBB-Token');
+    console.log('actions, signing with google, token: ', token);
     if (token){
-        dispatch(loginAction());
+        superagent
+        .get(`${__API_URL__}/user`)
+        .set('Authorization', `Bearer ${token}`)
+        .then(res=>{
+            dispatch(loginAction(res.body))
+        })
+        .catch(console.error);
     }
 }
 export const login = (user)=> dispatch=>{
