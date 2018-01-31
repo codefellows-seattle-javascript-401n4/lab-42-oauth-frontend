@@ -5,7 +5,7 @@ import querystring from 'querystring';
 
 class Login extends React.Component{
     render(){
-        let googleURL = "https://accounts.google.com/o/oauth2/v2/oauth";
+        let googleURL = "https://accounts.google.com/o/oauth2/v2/auth";
         let options = {
             client_id: __GOOGLE_CLIENT_ID__,
             redirect_uri:`${__API_URL__}/oauth/google/code`,
@@ -18,9 +18,9 @@ class Login extends React.Component{
         // Object.keys(options).map((key)=>{
         //     return `${key}=` + encodeURIComponent(options[key])
         // }).join("&")
-        console.log(QueryString);
+        
         let authURL = `${googleURL}?${QueryString}`;
-       
+        console.log(authURL);
         return(
             <React.Fragment>
                 <a href = {authURL}>Log in with Google</a>
