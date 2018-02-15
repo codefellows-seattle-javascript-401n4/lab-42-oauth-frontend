@@ -7,7 +7,7 @@ export default (state=defaultState, action) => {
 
   switch(type){
 
-  case 'LOGIN': return payload;
+  case 'LOGIN': return payload || {};
 
   case 'LOGOUT': return defaultState;
 
