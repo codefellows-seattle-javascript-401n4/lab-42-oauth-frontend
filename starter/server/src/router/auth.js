@@ -35,7 +35,7 @@ export default new Router()
     })
 
     .get('/user', bearerAuth, (req, res, next) => {
-      let user = req.body.user;
+      let user = req.user;
       if(user){
         res.send(user);
       } else {
