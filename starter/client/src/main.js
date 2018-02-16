@@ -2,7 +2,6 @@ import './style/main.scss';
 
 import React from 'react';
 import ReactDom from 'react-dom'
-// TODO: Switch this out for MemoryRouter (and read up on it!)
 import {MemoryRouter} from 'react-router-dom'
 import {Provider} from 'react-redux';
 

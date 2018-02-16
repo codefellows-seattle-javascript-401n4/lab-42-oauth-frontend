@@ -1,5 +1,3 @@
-// TODO: Handle LOGIN & LOGOUT
-
 export default (state=false, action) => {
   let {type, payload} = action;
 
