@@ -67,11 +67,15 @@ const mapDispatchToProps = dispatch => ({
 });
 
 App.propTypes = {
-  auth: PropTypes.shape({}).isRequired,
+  auth: PropTypes.bool,
   logout: PropTypes.func.isRequired,
-  route: PropTypes.func.isRequired,
+  route: PropTypes.string.isRequired,
   switchRoute: PropTypes.func.isRequired,
   validate: PropTypes.func.isRequired,
+};
+
+App.defaultProps = {
+  auth: false,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
