@@ -1,16 +1,32 @@
 401 JS --  Lab 42 OAUTH FRONTEND
 ===
 
-#### frontend
-* create a token reducer for managing your token
-* create an auth acicons file for making signup and login requests, storing, and clearing the token in the app state.
-  * remember to remove the cookie when the token is removed from the app state
-* create at least the folowing two routes
-  * `/landing` - display a login with google anchor
-  * `/chat` - display a p tag that says chat
-* add as many other routes or pages as you would like
-* create an index.html with an anchor tag pointing to the google authoraztion page
- * configure the query string with correct key value pairs
+#### to run:
+
+* in client: `npm i`
+* set up .env file:
+  * NODE_ENV=dev
+  * API_URL='http://localhost:5000'
+  * AUTH_URL=http://localhost:5000
+  * GOOGLE_CLIENT_SECRET=
+  * GOOGLE_CLIENT_ID=
+* `npm run watch`
+
+* in server: `npm i`
+* set up .env file:
+    * PORT=5000
+    * NODE_ENV='dev'
+    * SECRET='shark in the dark'
+    * API_URL='http://localhost:5000'
+    * CLIENT_URL='http://localhost:8080'
+    * CORS_ORIGINS='http://localhost:8080'
+    * MONGODB_URI='mongodb://localhost/slugchat-dev'
+    * GOOGLE_CLIENT_SECRET=
+    * GOOGLE_CLIENT_ID='
+* add a /db folder
+* `npm run mongo-on`  
+* `npm run watch`
+
 
 ####  Documentation  
 Write a description of the project in your README.md
