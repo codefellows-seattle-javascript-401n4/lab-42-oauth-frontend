@@ -28,6 +28,7 @@ class App extends React.Component {
       route,
       switchRoute,
     } = this.props;
+
     return (
       <React.Fragment>
 
