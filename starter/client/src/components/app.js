@@ -1,51 +1,81 @@
-import '../style/main.scss';
-
 import React from 'react';
-import {Switch, Route} from 'react-router-dom'
-import {connect} from 'react-redux'
+import PropTypes from 'prop-types';
 
-import Header from './header'
-import Footer from './footer'
-import Navbar from './navbar'
-import Chat from './chat'
-import Login from './login'
-import Profile from './profile'
+import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import Header from './header';
+import Footer from './footer';
+import Navbar from './navbar';
+import Chat from './chat';
+import Login from './login';
+import Profile from './profile';
 
 import * as authActions from '../app/actions/auth';
 import * as routeActions from '../app/actions/routes';
 
+import '../style/main.scss';
+
 class App extends React.Component {
+  componentWillMount() {
+    this.props.validate();
+  }
 
-    constructor(props) {
-        super(props);
-    }
-    
-    componentWillMount() {
-        // TODO: this is a good time to validate the user
-    }
+  render() {
+    const {
+      auth,
+      logout,
+      route,
+      switchRoute,
+    } = this.props;
 
-    render() {
-        return (
-            <React.Fragment>
+    return (
+      <React.Fragment>
 
-                <Header appTitle="Chat App" />
+        <Header appTitle="Chat App" />
 
-                { /* TODO: Probably should send the routing actions and the route state so you can show/hide links in the menu */ }
-                <Navbar /> 
+        <Navbar auth={auth} switchRoute={switchRoute} handleLogout={logout} />
 
-                <main>
-                   { /* TODO: Insert Switch logic in here for routing */ }
-                </main>
+        <main>
 
-                <Footer>
-                    <p>&copy;2017 401n4</p>
-                </Footer>
+          <Switch location={{ pathname: route }}>
+            <Route exact path="/chat" component={Chat} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/login" component={Login} />
+          </Switch>
+        </main>
 
-            </React.Fragment>
-        )
-    }
+        <Footer>
+          <p>&copy;2017 401n4</p>
+        </Footer>
+
+      </React.Fragment>
+    );
+  }
 }
 
-// TODO: Map state, dispatch, and connect the App
+const mapStateToProps = state => ({
+  auth: state.auth,
+  profile: state.profile,
+  route: state.route,
+});
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  validate: () => dispatch(authActions.validate()),
+  logout: () => dispatch(authActions.logout()),
+  switchRoute: route => dispatch(routeActions.switchRoute(route)),
+});
+
+App.propTypes = {
+  auth: PropTypes.bool,
+  logout: PropTypes.func.isRequired,
+  route: PropTypes.string.isRequired,
+  switchRoute: PropTypes.func.isRequired,
+  validate: PropTypes.func.isRequired,
+};
+
+App.defaultProps = {
+  auth: false,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

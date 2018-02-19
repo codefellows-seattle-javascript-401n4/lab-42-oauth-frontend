@@ -11,11 +11,38 @@ let URL = process.env.CLIENT_URL;
 
 export default new Router()
 
-    // TODO: Need routes to GET a user using only their bearer token, and to do a PUT on a user account.
-    // TODO: These can go here to get things wired up, but probably belong in a different route that's just for user data
+  .get('/user', bearerAuth, (req, res, next) => {
+      let user = req.user;
+      if ( user ) {
+          res.send(user);
+      }
+      else {
+          next();
+      }
+  })
 
+  .put('/user'
+    , bearerAuth, bodyParser.json(), (req, res, next) => {
+
+      let user = req.user;
+
+      try {
+
+          User.findOne({_id:user._id})
+              .then( record => {
+                  Object.assign(record, req.body);
+                  return record.save();
+              })
+              .then( record => res.send(record) )
+              .catch(next);
+
+      }
+      catch(e) {
+          next(e.message);
+      }
+  })
     .post('/signup', bodyParser.json() , (req, res, next) => {
-        
+
         new User.createFromSignup(req.body)
             .then(user => user.tokenCreate())
             .then(token => {
@@ -24,9 +51,9 @@ export default new Router()
             })
             .catch(next);
     })
-    
+
     .get('/usernames/:username', (req, res, next) => {
-    
+
         User.findOne({username: req.params.username})
             .then(user => {
                 if(!user) {
@@ -36,9 +63,9 @@ export default new Router()
             })
             .catch(next);
     })
-    
+
     .get('/login', basicAuth, (req, res, next) => {
-        
+
         req.user.tokenCreate()
             .then((token) => {
                 res.cookie('X-BBB-Token', token);
@@ -46,13 +73,13 @@ export default new Router()
             })
             .catch(next);
     })
-    
+
     .get('/oauth/google/code', (req, res, next) => {
-      
+
         let code = req.query.code;
-      
+
         console.log('(1) code', code);
-        
+
         // exchange the code or a token
         superagent.post('https://www.googleapis.com/oauth2/v4/token')
             .type('form')
@@ -65,7 +92,7 @@ export default new Router()
             })
             .then( response => {
                 let googleToken = response.body.access_token;
-                console.log("(2) google token", googleToken); 
+                console.log("(2) google token", googleToken);
                 return googleToken;
             })
             // use the token to get a user
@@ -74,7 +101,7 @@ export default new Router()
                     .set('Authorization', `Bearer ${token}`)
                     .then (response => {
                         let user = response.body;
-                        console.log("(3) Google User", user); 
+                        console.log("(3) Google User", user);
                         return user;
                     })
             })
@@ -87,12 +114,12 @@ export default new Router()
             .then ( token => {
                 res.cookie('X-BBB-Token', token);
                 res.redirect(URL);
-            }) 
+            })
             .catch( error => {
                 console.error(error);
                 res.redirect(URL);
             });
-        
+
     })
-        
+
 ;
