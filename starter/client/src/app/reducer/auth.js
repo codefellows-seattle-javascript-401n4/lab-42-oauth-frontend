@@ -1,7 +1,13 @@
 // TODO: Handle LOGIN & LOGOUT
 
-export default (state=null, action) => {
-    
-    return state;
-    
+export default (state=null, {type, payload}) => {
+    switch (type) {
+      case 'LOGIN':
+        return true;
+      case 'LOGOUT':
+        return false;
+      default:
+      return state;
+    }
+
 }
